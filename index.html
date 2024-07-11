@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aquamarine; /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(56, 237, 213, 0.9); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+        h1 {
+            text-align: center;
+            color: #3e7df2;
+        }
+        form {
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #9abbf4;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: rgb(105, 248, 236);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #70f8f8;
+            border: 1px solid #7ddbfa;
+            border-radius: 4px;
+        }
+        .plot {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis</h1>
+        <form method="POST" action="/">
+            <textarea name="text" rows="4" placeholder="Enter your review text here..." required></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        
+        {% if output %}
+        <div class="output">
+            <h2>Output:</h2>
+            <p>{{ output }}</p>
+        </div>
+        {% endif %}
+        
+        {% if plot_url %}
+        <div class="plot">
+            <h2>Graph of Ratings:</h2>
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Sentiment Analysis Plot">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
